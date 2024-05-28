@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  db:
+    image: mysql:latest
+    container_name: mysql
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    command: mysqld --mysql-native-password=ON
+    environment:
+      MYSQL_DATABASE: reddan
+      MYSQL_ROOT_PASSWORD: p78ichDi
+      MYSQL_USER: secret
+      MYSQL_PASSWORD: secret
+    volumes:
+      - data_base:/var/lib/mysql/
+    networks:
+      service_network:
+
+volumes:
+  data_base:
+
+networks:
+  service_network:
